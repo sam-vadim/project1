@@ -32,7 +32,7 @@ class About(views.APIView):
         return Response(serializer)
 
 
-class Contact(views.APIView):
-
-    def get(self, request):
-        return HttpResponse("<h2>Контакты</h2>")
+# class Contact(views.APIView):
+#
+#     def get(self, request):
+#         return HttpResponse("<h2>Контакты</h2>")
