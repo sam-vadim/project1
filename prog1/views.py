@@ -14,25 +14,25 @@ class Index(views.APIView):
         return HttpResponse(serializer.data)
 
 
-# class About(views.APIView):
-#
-#     def get(self, request):
-#
-#         try:
-#             data_one = Person.objects.get(id=5)
-#         except Person.DoesNotExist:
-#             return HttpResponse(f'<h2>Нет данных для запроса</h2>')
-#         except Person.MultipleObjectsReturned:
-#             return HttpResponse(f'<h2>Данные в запросе повторяются</h2>')
-#
-#         serializer = PersonSerializer(data_one).data
-#         # if serializer.is_valid():
-#         #     s = serializer.validated_data
-#
-#         return Response(serializer)
-#
-#
-# class Contact(views.APIView):
-#
-#     def get(self, request):
-#         return HttpResponse("<h2>Контакты</h2>")
+class About(views.APIView):
+
+    def get(self, request):
+
+        try:
+            data_one = Person.objects.get(id=5)
+        except Person.DoesNotExist:
+            return HttpResponse(f'<h2>Нет данных для запроса</h2>')
+        except Person.MultipleObjectsReturned:
+            return HttpResponse(f'<h2>Данные в запросе повторяются</h2>')
+
+        serializer = PersonSerializer(data_one).data
+        # if serializer.is_valid():
+        #     s = serializer.validated_data
+
+        return Response(serializer)
+
+
+class Contact(views.APIView):
+
+    def get(self, request):
+        return HttpResponse("<h2>Контакты</h2>")
