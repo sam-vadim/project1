@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class Prog1Config(AppConfig):
     name = 'prog1'
-    verbose_name = "Моё первое приложение"
+    verbose_name = "Первое приложение"

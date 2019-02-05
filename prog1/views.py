@@ -4,14 +4,18 @@ from rest_framework import views, status
 from rest_framework.response import Response
 from prog1.serializers import PersonSerializer, Person1Serializer
 
+from django.utils.translation import get_language_from_request
+from django.utils.translation import gettext as _
+
 class Index(views.APIView):
 
     def get(self, request):
         data_all = Person.objects.all()
-        serializer = PersonSerializer(data_all, many=True)
-        # if serializer.is_valid():
-        # return Response(data={'status': 'dsgsgfdsgfds'}, status=200)
-        return Response(serializer.data)
+        serializer = PersonSerializer(data=data_all, many=True)
+        if serializer.is_valid():
+            return Response(data={'status': 'Data is not valid'}, status=200)
+
+        return Response(data=serializer.data)
 
 
 class About(views.APIView):
@@ -28,6 +32,9 @@ class About(views.APIView):
         serializer = PersonSerializer(data_one)
         # if serializer.is_valid():
         #     s = serializer.validated_data
+
+        str = _('Привет как дела')
+        str1 = _('Дела не очень')
 
         return Response(serializer.data)
 

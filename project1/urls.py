@@ -18,7 +18,15 @@ from django.urls import path, include, re_path
 from django.conf.urls.static import static
 
 
+from django.conf.urls import  url, include
+from django.contrib import admin
+from project1.admin import auchan_admin
+
+# admin.autodiscover()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', auchan_admin.urls),
+
     path('api/v1/pro/', include("prog1.urls")),
 ]
