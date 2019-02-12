@@ -3,6 +3,7 @@ from prog1.models import Person
 from rest_framework import views, status
 from rest_framework.response import Response
 from prog1.serializers import PersonSerializer, Person1Serializer
+from django.shortcuts import render
 
 from django.utils.translation import get_language_from_request
 from django.utils.translation import gettext as _
@@ -10,6 +11,7 @@ from django.utils.translation import gettext as _
 class Index(views.APIView):
 
     def get(self, request):
+
         data_all = Person.objects.all()
         serializer = PersonSerializer(data=data_all, many=True)
         if serializer.is_valid():
@@ -17,13 +19,25 @@ class Index(views.APIView):
 
         return Response(data=serializer.data)
 
+        # return Response(data={'status': 'Data is not valid'}, status=200)
+
+
+class Index1(views.APIView):
+
+    def get(self, request):
+        data_all = Person.objects.all()
+        serializer = PersonSerializer(data=data_all, many=True)
+
+        return render(request, "index.html")
+
+
 
 class About(views.APIView):
 
     def get(self, request):
 
         try:
-            data_one = Person.objects.get(id=5)
+            data_one = Person.objects.get(id=1)
         except Person.DoesNotExist:
             return HttpResponse(f'<h2>Нет данных для запроса</h2>')
         except Person.MultipleObjectsReturned:

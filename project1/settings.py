@@ -58,10 +58,12 @@ ROOT_URLCONF = 'project1.urls'
 #     '/path/to/mysite/templates', # Change this to your own directory.
 # )
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,12 +87,11 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
-# }
+#  }
 
 DB_HOST = 'localhost'
-BASE_NAME = 'admin1'
-USER_NAME = 'root'
-
+BASE_NAME = 'qwerty'
+USER_NAME = 'vadim'
 
 DATABASES = {
     'default': {
@@ -98,6 +99,7 @@ DATABASES = {
         'HOST': f'{DB_HOST}',
         'NAME': f'{BASE_NAME}',
         'USER': f'{USER_NAME}',
+        'PASSWORD': f'{USER_NAME}',
     }
 }
 

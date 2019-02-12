@@ -6,4 +6,5 @@ urlpatterns = [
     path('', Index.as_view()),
     path('person/', PersonV.as_view()),
     path('about/', About.as_view()),
+    path('temp/', Index1.as_view()),
 ]

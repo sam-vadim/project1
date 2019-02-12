@@ -27,6 +27,7 @@ from project1.admin import auchan_admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', auchan_admin.urls),
+    # path('api/v1/pro/', include("prog1.urls")),
 
     path('api/v1/pro/', include("prog1.urls")),
-]
+ ]
