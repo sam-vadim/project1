@@ -28,6 +28,11 @@ class Index1(views.APIView):
         data_all = Person.objects.all()
         serializer = PersonSerializer(data=data_all, many=True)
 
+        data_to_add = [Person(id=3, name='Vadim', age=25, surname='Samarets1'),
+                       Person(id=4, name='Ira', age=16, surname='Oleynichenko1')]
+
+        Person.objects.bulk_create(data_to_add, ignore_conflicts=True)
+
         return render(request, "index.html")
 
 
